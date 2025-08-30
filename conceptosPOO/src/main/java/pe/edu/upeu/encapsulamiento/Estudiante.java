@@ -2,13 +2,11 @@ package pe.edu.upeu.encapsulamiento;
 
 public class Estudiante {
     private String codigo;
-    private String Carrera;
-
+    private String carrera;
 
     public void trabajo(){
-        System.out.println("Estudiar, invetigar" + "en la carrera de: "+Carrera);
+        System.out.println("estudiar, investigar en la carrera de :"+carrera);
     }
-
 
     public String getCodigo() {
         return codigo;
@@ -19,10 +17,10 @@ public class Estudiante {
     }
 
     public String getCarrera() {
-        return Carrera;
+        return carrera;
     }
 
     public void setCarrera(String carrera) {
-        Carrera = carrera;
+        this.carrera = carrera;
     }
 }

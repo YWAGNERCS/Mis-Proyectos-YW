@@ -5,6 +5,13 @@ public class Persona {
     protected int edad;
     private char genero;
 
+
+
+
+    void saludo (){
+        System.out.println( "hola, mi nombre  es "+nombre+"y mi edad es "+edad );
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -27,9 +34,5 @@ public class Persona {
 
     public void setGenero(char genero) {
         this.genero = genero;
-    }
-
-    void saludo(){
-        System.out.println("Hola, mi nombre es "+nombre+" y mi edad es "+ edad);
     }
 }

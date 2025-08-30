@@ -4,12 +4,11 @@ public class Loro implements Animal {
 
     @Override
     public void emitirSonido() {
-        System.out.println("Hola causaaa ");
+        System.out.println("hola cumpa");
     }
 
     @Override
     public void dormir() {
-        System.out.println("Zzz...Zzz...");
-
+        System.out.println("zzzzzzzz............zzz");
     }
 }
