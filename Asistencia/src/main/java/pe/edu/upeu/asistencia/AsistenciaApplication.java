@@ -17,6 +17,7 @@ import pe.edu.upeu.asistencia.control.AsistenciaController;
 
 @SpringBootApplication
 public class AsistenciaApplication extends Application {
+
 	private ConfigurableApplicationContext context;
 	private Parent parent;
 
@@ -43,5 +44,5 @@ public class AsistenciaApplication extends Application {
 		stage.setScene(new Scene(parent, bounds.getWidth(), bounds.getHeight()-100));
 		stage.setTitle("Asistencia Example");
 		stage.show();
-		}
+	}
 }

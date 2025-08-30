@@ -1,18 +1,17 @@
 package pe.edu.upeu.asistencia.control;
 
-
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class AsistenciaController {
+    @FXML
+    private TextField txtNum1, txtNum2;
 
-    @FXML private TextField txtNum1, txtNum2;
-
-
-    @FXML private Label result;
+    @FXML
+    private Label result;
 
     @FXML
     private void sumar() {

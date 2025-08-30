@@ -3,7 +3,7 @@ package pe.edu.upeu.claseinterface;
 public class Perro implements Animal{
     @Override
     public void emitirSonido() {
-        System.out.println("Hello Brother soy mayli");
+        System.out.println("Hello Brother ");
     }
 
     @Override

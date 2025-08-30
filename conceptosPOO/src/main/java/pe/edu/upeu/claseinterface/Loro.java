@@ -4,7 +4,7 @@ public class Loro implements Animal {
 
     @Override
     public void emitirSonido() {
-        System.out.println("Hola Juancarlos como estas xupa pinga ");
+        System.out.println("Hola causaaa ");
     }
 
     @Override
