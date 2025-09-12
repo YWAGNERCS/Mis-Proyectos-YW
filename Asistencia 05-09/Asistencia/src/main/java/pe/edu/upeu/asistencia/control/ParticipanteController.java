@@ -77,6 +77,7 @@ public class ParticipanteController {
         carreraCol=new TableColumn<>("Carrera");
         tipoParticipanteCol=new TableColumn<>("Tipo Participante");
         opCol=new TableColumn<>("Opciones");
+        opCol.setPrefWidth(200);
         tableRegPart.getColumns().addAll(dniCol,nombreCol,apellidoCol,carreraCol,tipoParticipanteCol,opCol);
 
 
