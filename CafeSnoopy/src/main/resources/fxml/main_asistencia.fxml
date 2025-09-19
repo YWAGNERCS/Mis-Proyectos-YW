@@ -10,7 +10,7 @@
          <!-- Header -->
          <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 15;">
             <Label text="📋" style="-fx-font-size: 24px;"/>
-            <Label text="Sistema de Control de Asistencia" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Calculadora" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
          </HBox>
 
          <!-- Formulario de Registro -->

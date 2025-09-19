@@ -13,8 +13,8 @@
                 <menus>
                     <Menu fx:id="menu1" mnemonicParsing="false" text="Archivo">
                         <items>
-                            <MenuItem fx:id="menuItem1" mnemonicParsing="false" text="Asistencia" />
-                            <MenuItem fx:id="menuItem2" mnemonicParsing="false" text="Participantes" />
+                            <MenuItem fx:id="menuItem1" mnemonicParsing="false" text="Calculadora" />
+                            <MenuItem fx:id="menuItem2" mnemonicParsing="false" text="En proceso" />
                             <SeparatorMenuItem />
                             <MenuItem fx:id="menuItemC" mnemonicParsing="false" text="Salir" />
                         </items>
@@ -76,7 +76,7 @@
 
             <Label text="HERRAMIENTAS" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 12px;"/>
 
-            <Button text="⚙ Configuración" maxWidth="Infinity"
+            <Button text="⚙️ Configuración" maxWidth="Infinity"
                     style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8;"/>
 
             <Button text="❓ Ayuda" maxWidth="Infinity"
@@ -115,7 +115,7 @@
                                     </VBox>
                                 </HBox>
 
-                                <Label text="© 2024 Cafe Snoopy - Todos los derechos reservados" style="-fx-text-fill: #bdc3c7; -fx-padding: 40 0 0 0;"/>
+                                <Label text="© 2025 Cafe Snoopy - Todos los derechos reservados" style="-fx-text-fill: #bdc3c7; -fx-padding: 40 0 0 0;"/>
                             </VBox>
                         </ScrollPane>
                     </content>
