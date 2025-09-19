@@ -13,17 +13,19 @@ public abstract class ProductoRepository {
             // Datos de ejemplo
             productos.add(new Producto(
                     new SimpleStringProperty("PROD001"),
-                    new SimpleStringProperty("Laptop HP"),
-                    new SimpleStringProperty("Laptop HP 15.6 pulgadas, 8GB RAM"),
-                    new SimpleDoubleProperty(2500.00),
+                    new SimpleStringProperty("Brownie de Chocolate"),
+                    new SimpleStringProperty("Bizcocho húmedo y compacto, elaborado con cacao puro y trozos de nuez. " +
+                            "Servido tibio para resaltar su sabor intenso. Porción: 100 g"),
+                    new SimpleDoubleProperty(8.00),
                     new SimpleIntegerProperty(10),
                     new SimpleBooleanProperty(true)
             ));
             productos.add(new Producto(
                     new SimpleStringProperty("PROD002"),
-                    new SimpleStringProperty("Mouse Inalámbrico"),
-                    new SimpleStringProperty("Mouse óptico inalámbrico"),
-                    new SimpleDoubleProperty(45.00),
+                    new SimpleStringProperty("Cafe Americano"),
+                    new SimpleStringProperty("Clásico y aromático, preparado con unespresso y agua caliente. " +
+                            "Una bebida ligera y equilibrada.180 ml"),
+                    new SimpleDoubleProperty(12.00),
                     new SimpleIntegerProperty(25),
                     new SimpleBooleanProperty(true)
             ));

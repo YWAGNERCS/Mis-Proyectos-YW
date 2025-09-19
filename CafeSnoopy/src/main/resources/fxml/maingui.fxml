@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
 <BorderPane fx:id="bp" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.asistencia.control.MainguiController">
     <top>
@@ -21,16 +20,16 @@
 
     <left>
         <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f0f0f0;">
-            <Label text="Módulos" style="-fx-font-weight: bold; -fx-padding: 5 0 10 0;"/>
-            <Button text="Usuarios" onAction="#handleUsuariosButton" maxWidth="Infinity" style="-fx-background-color: #4682B4; -fx-text-fill: white;"/>
-            <Button text="Productos" onAction="#handleProductosButton" maxWidth="Infinity" style="-fx-background-color: #3CB371; -fx-text-fill: white;"/>
+            <Label prefWidth="67.0" style="-fx-font-weight: bold; -fx-padding: 5 0 10 0;" text="MENÚ" />
+            <Button maxWidth="Infinity" onAction="#handleUsuariosButton" style="-fx-background-color: #4682B4; -fx-text-fill: white;" text="Usuarios" />
+            <Button maxWidth="Infinity" onAction="#handleProductosButton" style="-fx-background-color: #3CB371; -fx-text-fill: white;" text="Productos" />
         </VBox>
     </left>
 
     <center>
-        <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
             <tabs>
-                <Tab text="Inicio">
+                <Tab text="Inicio" closable="false">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <Label text="Bienvenido al Sistema de Gestión" layoutX="50" layoutY="50" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>

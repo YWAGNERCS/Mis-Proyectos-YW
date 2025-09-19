@@ -41,7 +41,7 @@ public class AsistenciaApplication extends Application {
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		stage.setScene(new Scene(parent, bounds.getWidth(), bounds.getHeight()-100));
-		stage.setTitle("Asistencia Example");
+		stage.setTitle("Cafe Snoopy - Sistema de Venta");
 		stage.show();
 	}
 }
