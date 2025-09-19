@@ -1,8 +1,8 @@
-package pe.edu.upeu.asistencia.repositorio;
+package pe.edu.upeu.cafeSnoopy.repositorio;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import pe.edu.upeu.asistencia.modelo.Usuario;
+import pe.edu.upeu.cafeSnoopy.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 

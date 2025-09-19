@@ -1,6 +1,6 @@
-package pe.edu.upeu.asistencia.servicio;
+package pe.edu.upeu.cafeSnoopy.servicio;
 
-import pe.edu.upeu.asistencia.modelo.Producto;
+import pe.edu.upeu.cafeSnoopy.modelo.Producto;
 import java.util.List;
 
 public interface ProductoServicioI {

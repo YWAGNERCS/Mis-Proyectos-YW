@@ -1,8 +1,7 @@
-package pe.edu.upeu.asistencia.modelo;
+package pe.edu.upeu.cafeSnoopy.modelo;
 
 import javafx.beans.property.*;
 import lombok.*;
-import java.math.BigDecimal;
 
 @AllArgsConstructor
 @NoArgsConstructor

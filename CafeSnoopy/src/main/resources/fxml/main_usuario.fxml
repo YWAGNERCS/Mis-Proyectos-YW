@@ -6,7 +6,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="pe.edu.upeu.asistencia.control.UsuarioController"
+            fx:controller="pe.edu.upeu.cafeSnoopy.control.UsuarioController"
             prefHeight="600.0" prefWidth="800.0">
 
     <VBox spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">

@@ -1,8 +1,8 @@
-package pe.edu.upeu.asistencia.servicio;
+package pe.edu.upeu.cafeSnoopy.servicio;
 
 import org.springframework.stereotype.Service;
-import pe.edu.upeu.asistencia.modelo.Usuario;
-import pe.edu.upeu.asistencia.repositorio.UsuarioRepository;
+import pe.edu.upeu.cafeSnoopy.modelo.Usuario;
+import pe.edu.upeu.cafeSnoopy.repositorio.UsuarioRepository;
 import java.util.List;
 
 @Service

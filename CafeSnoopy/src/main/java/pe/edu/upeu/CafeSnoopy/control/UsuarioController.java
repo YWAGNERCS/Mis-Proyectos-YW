@@ -1,4 +1,4 @@
-package pe.edu.upeu.asistencia.control;
+package pe.edu.upeu.cafeSnoopy.control;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -9,8 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pe.edu.upeu.asistencia.modelo.Usuario;
-import pe.edu.upeu.asistencia.servicio.UsuarioServicioI;
+import pe.edu.upeu.cafeSnoopy.modelo.Usuario;
+import pe.edu.upeu.cafeSnoopy.servicio.UsuarioServicioI;
 
 @Controller
 public class UsuarioController {

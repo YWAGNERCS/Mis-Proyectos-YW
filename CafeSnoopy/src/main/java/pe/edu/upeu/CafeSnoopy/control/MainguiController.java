@@ -1,4 +1,4 @@
-package pe.edu.upeu.asistencia.control;
+package pe.edu.upeu.cafeSnoopy.control;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -86,7 +86,7 @@ public class MainguiController {
     class MenuItemListener {
         Map<String, String[]> menuConfig = Map.of(
                 "menuItem1", new String[]{"/fxml/main_asistencia.fxml", "Gestion Asistencia", "T"},
-                "menuItem2", new String[]{"/fxml/main_participante.fxml", "Gestion Participantes", "T"},
+                "menuItem2", new String[]{"/fxml/main_participante.fxml", "en proceso de cafe", "T"},
                 "menuItemC", new String[]{"/fxml/login.fxml", "Salir", "C"}
         );
 
@@ -123,7 +123,7 @@ public class MainguiController {
     }
 
     private void crearInterfazPorDefecto(String titulo) {
-        Label mensaje = new Label("Módulo " + titulo + " en desarrollo");
+        Label mensaje = new Label("sistema de venta " + titulo + " .................en proceso");
         mensaje.setStyle("-fx-font-size: 16px; -fx-padding: 20px;");
 
         ScrollPane scrollPane = new ScrollPane(mensaje);
@@ -132,6 +132,19 @@ public class MainguiController {
         Tab newTab = new Tab(titulo, scrollPane);
         tabPane.getTabs().add(newTab);
         tabPane.getSelectionModel().select(newTab);
+    }
+
+
+    public void handleVentasButton(ActionEvent event) {
+        // Lógica para el botón de Ventas
+    }
+
+    public void handleReportesButton(ActionEvent event) {
+        // Lógica para el botón de Reportes
+    }
+
+    public void handleInventarioButton(ActionEvent event) {
+        // Lógica para el botón de Inventario
     }
 
     class MenuListener {

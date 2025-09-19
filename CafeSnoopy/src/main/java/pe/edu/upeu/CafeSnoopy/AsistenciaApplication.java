@@ -1,4 +1,4 @@
-package pe.edu.upeu.asistencia;
+package pe.edu.upeu.cafeSnoopy;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import pe.edu.upeu.asistencia.control.AsistenciaController;
 
 @SpringBootApplication
 public class AsistenciaApplication extends Application {
@@ -41,7 +39,7 @@ public class AsistenciaApplication extends Application {
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		stage.setScene(new Scene(parent, bounds.getWidth(), bounds.getHeight()-100));
-		stage.setTitle("Cafe Snoopy - Sistema de Venta");
+		stage.setTitle("Asistencia Example");
 		stage.show();
 	}
 }

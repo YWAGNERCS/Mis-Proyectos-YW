@@ -1,4 +1,4 @@
-package pe.edu.upeu.asistencia;
+package pe.edu.upeu.cafeSnoopy;
 
 public class Aplicacion {
     public static void main(String[] args) {

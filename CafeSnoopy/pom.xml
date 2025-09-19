@@ -86,7 +86,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-					<mainClass>pe.edu.upeu.asistencia.Aplicacion</mainClass>
+					<mainClass>pe.edu.upeu.cafeSnoopy.Aplicacion</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

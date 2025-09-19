@@ -1,4 +1,4 @@
-package pe.edu.upeu.asistencia.modelo;
+package pe.edu.upeu.cafeSnoopy.modelo;
 
 import javafx.beans.property.*;
 import lombok.*;
