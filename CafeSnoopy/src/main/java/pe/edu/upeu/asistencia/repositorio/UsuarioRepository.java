@@ -13,19 +13,19 @@ public abstract class UsuarioRepository {
         if (usuarios.isEmpty()) {
             // Datos de ejemplo
             usuarios.add(new Usuario(
-                    new SimpleStringProperty("admin"),
-                    new SimpleStringProperty("admin123"),
-                    new SimpleStringProperty("Juan"),
-                    new SimpleStringProperty("Pérez"),
-                    new SimpleStringProperty("juan@upeu.edu.pe"),
+                    new SimpleStringProperty("Wagner.chambi"),
+                    new SimpleStringProperty("202510050"),
+                    new SimpleStringProperty("Yoel Wagner"),
+                    new SimpleStringProperty("Chambi Sirena"),
+                    new SimpleStringProperty("wagner.chambi@upeu.edu.pe"),
                     new SimpleBooleanProperty(true)
             ));
             usuarios.add(new Usuario(
-                    new SimpleStringProperty("maria"),
-                    new SimpleStringProperty("maria123"),
-                    new SimpleStringProperty("María"),
-                    new SimpleStringProperty("Gómez"),
-                    new SimpleStringProperty("maria@upeu.edu.pe"),
+                    new SimpleStringProperty("Aron.q.magaño"),
+                    new SimpleStringProperty("202510878"),
+                    new SimpleStringProperty("Aron Rodrigo"),
+                    new SimpleStringProperty("Magaño Quispe"),
+                    new SimpleStringProperty("aron.m.quispe@upeu.edu.pe"),
                     new SimpleBooleanProperty(true)
             ));
         }
