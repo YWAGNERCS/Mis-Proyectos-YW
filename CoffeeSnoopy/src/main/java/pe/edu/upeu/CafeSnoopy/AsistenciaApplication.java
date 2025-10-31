@@ -15,41 +15,47 @@ import java.net.URL;
 @SpringBootApplication
 public class AsistenciaApplication extends Application {
 
-	private ConfigurableApplicationContext context;
-	private Parent parent;
+    private ConfigurableApplicationContext context;
+    private Parent parent;
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-	@Override
-	public void init() throws Exception {
-		SpringApplicationBuilder builder = new SpringApplicationBuilder(AsistenciaApplication.class);
-		builder.application().setWebApplicationType(WebApplicationType.NONE);
-		context = builder.run(getParameters().getRaw().toArray(new String[0]));
+    @Override
+    public void init() throws Exception {
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(AsistenciaApplication.class);
+        builder.application().setWebApplicationType(WebApplicationType.NONE);
+        context = builder.run(getParameters().getRaw().toArray(new String[0]));
 
-		// CORREGIR: Usar getResource con la ruta correcta
-		URL fxmlUrl = getClass().getResource("/fxml/maingui.fxml");
-		if (fxmlUrl == null) {
-			throw new IllegalStateException("No se pudo encontrar maingui.fxml en /fxml/");
-		}
+        // --- ⬇️ CAMBIO AQUÍ ⬇️ ---
+        // 1. Apuntamos al login, no al maingui.
+        URL fxmlUrl = getClass().getResource("/fxml/main_login.fxml");
+        if (fxmlUrl == null) {
+            throw new IllegalStateException("No se pudo encontrar 'main_login.fxml' en /fxml/");
+        }
+        // --- ⬆️ FIN DEL CAMBIO ⬆️ ---
 
-		FXMLLoader loader = new FXMLLoader(fxmlUrl);
-		loader.setControllerFactory(context::getBean);
-		parent = loader.load();
-	}
+        FXMLLoader loader = new FXMLLoader(fxmlUrl);
+        loader.setControllerFactory(context::getBean);
+        parent = loader.load();
+    }
 
-	@Override
-	public void start(Stage stage) throws Exception {
-		stage.setScene(new Scene(parent, 1000, 700));
-		stage.setTitle("Cafe Snoopy - Sistema de Gestión");
-		stage.show();
-	}
+    @Override
+    public void start(Stage stage) throws Exception {
+        // --- ⬇️ CAMBIO AQUÍ ⬇️ ---
+        // 2. Ajustamos el tamaño y título de la ventana de login
+        // (Tu FXML de login está diseñado para 900x600)
+        stage.setScene(new Scene(parent, 900, 600));
+        stage.setTitle("Cafe Snoopy - Iniciar Sesión");
+        // --- ⬆️ FIN DEL CAMBIO ⬆️ ---
+        stage.show();
+    }
 
-	@Override
-	public void stop() throws Exception {
-		if (context != null) {
-			context.close();
-		}
-	}
+    @Override
+    public void stop() throws Exception {
+        if (context != null) {
+            context.close();
+        }
+    }
 }
