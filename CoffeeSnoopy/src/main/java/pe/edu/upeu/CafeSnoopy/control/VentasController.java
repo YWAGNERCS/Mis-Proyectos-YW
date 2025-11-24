@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import pe.edu.upeu.CafeSnoopy.modelo.*;
 import pe.edu.upeu.CafeSnoopy.repositorio.*;
-import pe.edu.upeu.CafeSnoopy.servicio.ApiService; // Servicio de API
+import pe.edu.upeu.CafeSnoopy.servicio.ApiService;
 import pe.edu.upeu.CafeSnoopy.servicio.TicketService;
 import pe.edu.upeu.CafeSnoopy.utils.SesionGlobal;
 
@@ -22,29 +22,40 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// ✅ IMPORTS NUEVOS PARA EL QR EN PANTALLA
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+
 @Controller
 public class VentasController {
 
-
+    // --- Componentes FXML ---
     @FXML private TextField txtBuscarProducto, txtCliente;
     @FXML private TableView<Producto> tableProductos;
     @FXML private TableView<DetalleVenta> tableCarrito;
     @FXML private Label lblSubtotal, lblIgv, lblTotal;
     @FXML private TabPane tabPaneVentas;
 
+    // --- Historial y Métricas ---
     @FXML private TableView<Venta> tableHistorial;
     @FXML private Label lblHistorialTotalVentas, lblHistorialIngresos;
     @FXML private Label lblMetricasVentaHoy, lblMetricasProdVendidos, lblMetricasClientes;
     @FXML private TableView<Object[]> tableTopProductos;
 
-
+    // --- Inyección de Dependencias ---
     @Autowired private ProductoRepository productoRepo;
     @Autowired private VentaRepository ventaRepo;
     @Autowired private DetalleVentaRepository detalleRepo;
     @Autowired private TicketService ticketService;
-    @Autowired private ApiService apiService; // implementacion del servicio de API
+    @Autowired private ApiService apiService;
 
-
+    // --- Listas Observables ---
     private ObservableList<Producto> productosDisponibles = FXCollections.observableArrayList();
     private ObservableList<DetalleVenta> carritoCompras = FXCollections.observableArrayList();
     private ObservableList<Venta> listaHistorial = FXCollections.observableArrayList();
@@ -60,17 +71,12 @@ public class VentasController {
         cargarMetricas();
     }
 
-
-
+    // ==================== API RENIEC ====================
     @FXML
     public void buscarClientePorDni() {
         String dni = txtCliente.getText().trim();
-
-        // Validar formato DNI
         if (dni.length() == 8 && dni.matches("\\d+")) {
-
             String nombreEncontrado = apiService.buscarPersona(dni);
-
             if (nombreEncontrado != null) {
                 txtCliente.setText(nombreEncontrado);
                 mostrarAlerta("Éxito", "Cliente encontrado: " + nombreEncontrado, Alert.AlertType.INFORMATION);
@@ -82,8 +88,7 @@ public class VentasController {
         }
     }
 
-
-
+    // ==================== PROCESO DE VENTA ====================
     @FXML
     public void procesarVenta() {
         if(carritoCompras.isEmpty()) {
@@ -91,20 +96,15 @@ public class VentasController {
             return;
         }
 
-
         if (SesionGlobal.usuarioLogueado == null) {
-            mostrarAlerta("Error de Sesión", "No se ha identificado al usuario vendedor. Por favor inicie sesión nuevamente.", Alert.AlertType.ERROR);
+            mostrarAlerta("Error de Sesión", "No se ha identificado al usuario vendedor.", Alert.AlertType.ERROR);
             return;
         }
 
         try {
             Venta v = new Venta();
             v.setFechaVenta(LocalDateTime.now());
-
-
             v.setUsuario(SesionGlobal.usuarioLogueado);
-
-            // Nombre del cliente (o General)
             if(txtCliente != null) v.setNombreCliente(txtCliente.getText().isEmpty() ? "Cliente General" : txtCliente.getText());
 
             BigDecimal total = BigDecimal.ZERO;
@@ -115,25 +115,26 @@ public class VentasController {
             v.setTotalVenta(total);
             v.setDetalles(new ArrayList<>(carritoCompras));
 
-            // Guardar en Base de Datos
             ventaRepo.save(v);
 
-            // Actualizar Stock
             for(DetalleVenta d : carritoCompras) {
                 Producto p = d.getProducto();
                 p.setStock(p.getStock() - d.getCantidad());
                 productoRepo.save(p);
             }
 
+            // 1️⃣ IMPRIMIR TICKET FÍSICO (Si la impresora está conectada)
             try {
                 ticketService.imprimirVenta(v);
             } catch (Exception ex) {
                 System.err.println("No se pudo imprimir el ticket: " + ex.getMessage());
             }
 
-            mostrarAlerta("Éxito", "Venta registrada correctamente. ID: " + v.getIdVenta(), Alert.AlertType.INFORMATION);
+            // 2️⃣ MOSTRAR QR EN PANTALLA (¡NUEVO!)
+            mostrarQREnPantalla(v);
 
-            // Limpiar todo
+            // Limpiar interfaz
+            // Nota: No mostramos alerta de texto aquí porque la alerta del QR ya confirma la venta
             limpiarCarrito();
             if(txtCliente != null) txtCliente.clear();
             cargarProductos("");
@@ -146,6 +147,55 @@ public class VentasController {
         }
     }
 
+    // ✅ MÉTODO NUEVO: Genera y muestra la ventana con el QR
+    private void mostrarQREnPantalla(Venta v) {
+        try {
+            // Información que contendrá el QR
+            String contenido = "CAFE SNOOPY\n" +
+                    "VENTA: " + v.getIdVenta() + "\n" +
+                    "FECHA: " + v.getFechaVenta().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) + "\n" +
+                    "TOTAL: S/ " + v.getTotalVenta() + "\n" +
+                    "CLIENTE: " + (v.getNombreCliente() != null ? v.getNombreCliente() : "General");
+
+            // Generar la matriz de píxeles del QR
+            QRCodeWriter qrWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrWriter.encode(contenido, BarcodeFormat.QR_CODE, 250, 250);
+
+            // Convertir la matriz a una imagen JavaFX
+            int width = bitMatrix.getWidth();
+            int height = bitMatrix.getHeight();
+            WritableImage qrImage = new WritableImage(width, height);
+            PixelWriter pixelWriter = qrImage.getPixelWriter();
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    pixelWriter.setColor(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                }
+            }
+
+            // Crear la ventana emergente personalizada
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Venta Exitosa");
+            alert.setHeaderText("¡Venta N° " + v.getIdVenta() + " registrada!");
+
+            VBox content = new VBox(10);
+            content.setAlignment(javafx.geometry.Pos.CENTER);
+
+            Label lblInfo = new Label("Escanee este código para su comprobante digital:");
+            ImageView imageView = new ImageView(qrImage);
+
+            content.getChildren().addAll(lblInfo, imageView);
+            alert.getDialogPane().setContent(content);
+
+            alert.showAndWait();
+
+        } catch (Exception e) {
+            System.err.println("Error generando QR visual: " + e.getMessage());
+            mostrarAlerta("Éxito", "Venta registrada (No se pudo generar QR visual).", Alert.AlertType.INFORMATION);
+        }
+    }
+
+    // ==================== GESTIÓN DE CARRITO ====================
 
     private void agregarAlCarrito(Producto p) {
         if(p.getStock() <= 0) { mostrarAlerta("Stock", "Producto agotado.", Alert.AlertType.WARNING); return; }
@@ -187,7 +237,7 @@ public class VentasController {
         cargarProductos(txtBuscarProducto.getText());
     }
 
-
+    // ==================== CONFIGURACIÓN DE TABLAS ====================
 
     private void configurarTablaProductos() {
         TableColumn<Producto, String> colNom = new TableColumn<>("Producto");

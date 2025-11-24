@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.*?>
 
 <BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.12"
@@ -41,7 +40,7 @@
 
                             <HBox spacing="20">
                                 <VBox spacing="10" style="-fx-pref-width: 480;">
-                                    <Label text="📈 Ventas de la Semana" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <Label text="📈 Ventas Diarias" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
                                     <BarChart fx:id="barChartVentas" prefHeight="300" prefWidth="480">
                                         <xAxis>
                                             <CategoryAxis label="Días" />
@@ -53,7 +52,7 @@
                                 </VBox>
 
                                 <VBox spacing="10" style="-fx-pref-width: 480;">
-                                    <Label text="🥧 Distribución por Categoría" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                    <Label text="🥧 Productos Top" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
                                     <PieChart fx:id="pieChartCategorias" prefHeight="300" prefWidth="480"/>
                                 </VBox>
                             </HBox>
@@ -79,12 +78,13 @@
                 <content>
                     <VBox spacing="15" style="-fx-padding: 20;">
                         <Label text="📑 Reporte de Ventas Detallado" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
-                        <TableView prefHeight="400">
+
+                        <TableView fx:id="tableReportes" prefHeight="400">
                             <columns>
-                                <TableColumn text="Fecha" prefWidth="100"/>
-                                <TableColumn text="N° Venta" prefWidth="80"/>
-                                <TableColumn text="Total" prefWidth="100"/>
                             </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
                         </TableView>
                     </VBox>
                 </content>
