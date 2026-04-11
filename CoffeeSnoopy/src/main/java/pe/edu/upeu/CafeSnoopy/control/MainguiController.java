@@ -138,7 +138,6 @@ public class MainguiController {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            // Crear pestañas por defecto si no existen los archivos FXML
             crearInterfazPorDefecto(titulo);
         }
     }
@@ -160,7 +159,56 @@ public class MainguiController {
 
     class MenuListener {
         public void menuSelected(Event e) {
-            // Lógica para manejar eventos de menú si es necesario
         }
+    }
+
+    // ✅ NUEVO MÉTODO PARA EL BOTÓN "MANUAL DE USUARIO"
+    @FXML
+    public void abrirManual(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Manual de Usuario");
+        alert.setHeaderText("📘 GUÍA RÁPIDA - CAFE SNOOPY v1.0");
+
+        // Texto completo del manual
+        String contenidoManual = """
+            1. 🚀 INICIO DE SESIÓN
+               - Use su usuario y contraseña asignados.
+               - Si falla, contacte al administrador.
+
+            2. 🛒 VENTAS (CAJA)
+               - Cliente: Escriba DNI y use el botón '🔍 RENIEC'.
+               - Productos: Busque y agregue con el botón verde (+).
+               - Finalizar: Presione 'PROCESAR VENTA'.
+               - Ticket: Se imprime y muestra QR automáticamente.
+
+            3. 📦 PRODUCTOS
+               - El código se genera solo (PROD-XXX).
+               - Llene Nombre, Precio y Stock inicial.
+               - Use 'Guardar' para registrar cambios.
+
+            4. 📊 REPORTES
+               - Seleccione Fecha Inicio y Fin.
+               - Click en 'Generar Reporte' para ver gráficos.
+               - Use 'Exportar PDF' para guardar el archivo.
+
+            5. 👥 USUARIOS
+               - Solo el admin puede crear cuentas.
+               - Marque 'Activo' para permitir el acceso.
+
+            ❓ SOLUCIÓN RÁPIDA
+               - ¿No busca DNI? Verifique su internet.
+               - ¿No imprime? Revise que la impresora se llame 'POS-80'.
+            """;
+
+        TextArea textArea = new TextArea(contenidoManual);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+
+        alert.getDialogPane().setContent(textArea);
+        alert.getDialogPane().setPrefSize(500, 400);
+
+        alert.showAndWait();
     }
 }

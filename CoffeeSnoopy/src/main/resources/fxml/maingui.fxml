@@ -28,7 +28,7 @@
                     <Menu mnemonicParsing="false" text="Ayuda">
                         <items>
                             <MenuItem text="Acerca de" />
-                            <MenuItem text="Manual de usuario" />
+                            <MenuItem text="Manual de usuario" onAction="#abrirManual"/>
                         </items>
                     </Menu>
                 </menus>
@@ -79,7 +79,7 @@
             <Button text="⚙️ Configuración" maxWidth="Infinity"
                     style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8;"/>
 
-            <Button text="❓ Ayuda" maxWidth="Infinity"
+            <Button text="❓ Ayuda" maxWidth="Infinity" onAction="#abrirManual"
                     style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8;"/>
         </VBox>
     </left>

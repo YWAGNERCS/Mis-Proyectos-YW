@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="477dd898-f6b4-4ae0-aa19-c228d3a1bbfe" name="Changes" comment="" />
+    <list default="true" id="477dd898-f6b4-4ae0-aa19-c228d3a1bbfe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/snoopy.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/snoopy.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/edu/upeu/CafeSnoopy/control/MainguiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/edu/upeu/CafeSnoopy/control/MainguiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/maingui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/maingui.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,10 +75,11 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yoelw/Downloads/CoffeeSnoopy/CoffeeSnoopy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/C2G1/Avances08/Mis-Proyectos-YW/CoffeeSnoopy&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -134,8 +140,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.32098.37" />
       </set>
     </attachedChunks>
   </component>
@@ -157,10 +163,25 @@
       <workItem from="1763998340403" duration="631000" />
       <workItem from="1764000025863" duration="3002000" />
       <workItem from="1764003618848" duration="3866000" />
+      <workItem from="1764024348421" duration="1401000" />
+      <workItem from="1764026018382" duration="1255000" />
+      <workItem from="1764075773328" duration="177000" />
+      <workItem from="1764076027181" duration="317000" />
+      <workItem from="1764107270805" duration="99000" />
+      <workItem from="1775922678145" duration="483000" />
+      <workItem from="1775923177440" duration="52000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
